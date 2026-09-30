@@ -1,0 +1,17 @@
+type ProductSample {
+    id: Int!
+    title: String!
+    url: String!
+    updated_at: String
+    sort_order: Int!
+}
+
+interface ProductInterface {
+    documents: [ProductSample!]!
+        @resolver(
+            class: "Embitel\\ProductSamplesGraphQl\\Model\\Resolver\\ProductSamples"
+        )
+        @doc(
+            description: "Custom product sample files."
+        )
+}

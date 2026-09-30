@@ -1,0 +1,22 @@
+{
+    "customer_login_otp": {
+        "column": {
+            "otp_id": true,
+            "customer_id": true,
+            "email": true,
+            "phone": true,            
+            "otp": true,
+            "event": true,
+            "website_id": true,
+            "expire": true,
+            "message": true,
+            "response_message": true,
+            "creation_time": true,
+            "update_time": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "CUTOMER_LOGIN_OTP_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true
+        }
+    }
+}

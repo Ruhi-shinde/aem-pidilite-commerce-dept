@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Embitel\Contest\Api\ContestRepositoryInterface"
+                type="Embitel\Contest\Model\ContestRepository"/>
+
+    <preference for="Embitel\Contest\Api\Data\ContestInterface"
+                type="Embitel\Contest\Model\Contest"/>
+
+    <preference for="Embitel\Contest\Api\Data\ContestSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+
+    <type name="Embitel\Contest\Model\ContestRepository">
+        <plugin name="embitel_contest_apply_store_code_from_header"
+                type="Embitel\Contest\Plugin\ApplyStoreCodeFromHeader"
+                sortOrder="10"/>
+    </type>
+
+
+    <type name="Embitel\Contest\Model\ResourceModel\Contest\Grid\Collection">
+
+        <arguments>
+            <argument name="mainTable" xsi:type="string">embitel_contest_contest</argument>
+
+            <argument name="resourceModel" xsi:type="string">
+                Embitel\Contest\Model\ResourceModel\Contest
+            </argument>
+        </arguments>
+
+    </type>
+
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="embitel_contest_contest_listing_data_source"
+                      xsi:type="string">
+                    Embitel\Contest\Model\ResourceModel\Contest\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

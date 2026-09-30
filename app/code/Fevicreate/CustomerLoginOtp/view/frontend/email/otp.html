@@ -1,0 +1,18 @@
+<!--@subject {{trans "Verifying it's you"}} @-->
+<!--@vars {
+"var data.email":"Receiver Email",
+"var data.otp":"OTP",
+"var data.otp_time":"OTP Expire Time",
+"var store.frontend_name":"Store Frontend Name"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<h2>Hello {{var data.customer.name}}, you’re nearly there!</h2>
+<p>As an added layer of security, you're required to verify your identity.</p>
+<!--<p>To process Login, enter the following verification code:</p>-->
+<p>{{trans "Here's your verification code for %store_name" store_name=$store.frontend_name}}</p>
+<h2>{{var data.otp}}</h2>
+<p>{{trans "The code can only be used once and is valid for %otp_time seconds." otp_time=$data.otp_time}}</p>
+
+{{template config_path="design/email/footer_template"}}

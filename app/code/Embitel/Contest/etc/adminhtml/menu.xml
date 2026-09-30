@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Embitel::top_level" title="Embitel" module="Embitel_Contest" sortOrder="9999" resource="Magento_Backend::content"/>
+		<add id="Embitel_Contest::embitel_contest_contest" title="Contest" module="Embitel_Contest" sortOrder="9999" resource="Magento_Backend::content" parent="Embitel::top_level" action="embitel_contest/contest/index"/>
+		<remove id="Magento_Newsletter::newsletter_subscriber"/>
+		<add id="Embitel_Contest::newsletter_subscriber" title="Subcribers" translate="title" module="Magento_Newsletter" sortOrder="10020" parent="Embitel::top_level" action="newsletter/subscriber/" resource="Magento_Newsletter::subscriber"/>
+	</menu>
+</config>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Embitel\ContactUs\Api\ContactUsRepositoryInterface"
+                type="Embitel\ContactUs\Model\ContactUsRepository"/>
+
+    <preference for="Embitel\ContactUs\Api\Data\ContactUsInterface"
+                type="Embitel\ContactUs\Model\ContactUs"/>
+
+    <preference for="Embitel\ContactUs\Api\Data\ContactUsSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+
+    <type name="Embitel\ContactUs\Model\ResourceModel\ContactUs\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">embitel_contact_us</argument>
+            <argument name="resourceModel" xsi:type="string">Embitel\ContactUs\Model\ResourceModel\ContactUs</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="embitel_contactus_contact_listing_data_source" xsi:type="string">
+                    Embitel\ContactUs\Model\ResourceModel\ContactUs\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

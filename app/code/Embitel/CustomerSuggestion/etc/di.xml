@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Embitel\CustomerSuggestion\Api\CustomerSuggestionRepositoryInterface"
+                type="Embitel\CustomerSuggestion\Model\CustomerSuggestionRepository"/>
+
+    <preference for="Embitel\CustomerSuggestion\Api\Data\CustomerSuggestionInterface"
+                type="Embitel\CustomerSuggestion\Model\CustomerSuggestion"/>
+
+    <preference for="Embitel\CustomerSuggestion\Api\Data\CustomerSuggestionSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+
+    <type name="Embitel\CustomerSuggestion\Model\CustomerSuggestionRepository">
+        <plugin name="embitel_customersuggestion_apply_store_code_from_header"
+                type="Embitel\CustomerSuggestion\Plugin\ApplyStoreCodeFromHeader"
+                sortOrder="10"/>
+    </type>
+
+    <type name="Embitel\CustomerSuggestion\Model\ResourceModel\CustomerSuggestion\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">customer_suggestion</argument>
+            <argument name="resourceModel" xsi:type="string">Embitel\CustomerSuggestion\Model\ResourceModel\CustomerSuggestion</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="embitel_customersuggestion_suggestion_listing_data_source" xsi:type="string">
+                    Embitel\CustomerSuggestion\Model\ResourceModel\CustomerSuggestion\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

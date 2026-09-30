@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Embitel_Bookmark::embitel_bookmark_bookmark" title="Bookmark" module="Embitel_Bookmark" sortOrder="10010" resource="Embitel_Bookmark::bookmark_view" parent="Embitel::top_level" action="embitel_bookmark/bookmark/index"/>
+    </menu>
+</config>

@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="embitel_contest_contest" resource="default" engine="innodb" comment="embitel_contest_contest Table">
+		<column xsi:type="int" name="contest_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="contest_id"/>
+		</constraint>
+		<column name="contest_name" nullable="true" xsi:type="text" comment="contest_name"/>
+		<column name="contest_title" nullable="true" xsi:type="varchar" comment="contest_title" length="255"/>
+		<column name="user_id" nullable="true" xsi:type="int" comment="user_id" identity="false"/>
+		<index referenceId="EMBITEL_CONTEST_CONTEST_USER_ID" indexType="btree">
+			<column name="user_id"/>
+		</index>
+		<column name="child_name" nullable="true" xsi:type="varchar" comment="child_name" length="255"/>
+		<column name="parent_email" nullable="true" xsi:type="varchar" comment="parent_email" length="255"/>
+		<column name="parent_phone" nullable="true" xsi:type="varchar" comment="parent_phone" length="255"/>
+		<column name="artwork_title" nullable="true" xsi:type="varchar" comment="artwork_title" length="255"/>
+		<column name="banner_image" nullable="true" xsi:type="varchar" comment="banner_image" length="255"/>
+		<column name="cta_link" nullable="true" xsi:type="varchar" comment="cta_link" length="255"/>
+		<column name="description" nullable="true" xsi:type="text" comment="description"/>
+		<column name="documents" nullable="true" xsi:type="text" comment="documents"/>
+		<column name="created_at" nullable="false" xsi:type="timestamp" default="CURRENT_TIMESTAMP" on_update="false" comment="created_at"/>
+		<column name="updated_at" nullable="false" xsi:type="timestamp" default="CURRENT_TIMESTAMP" on_update="true" comment="updated_at"/>
+	</table>
+</schema>

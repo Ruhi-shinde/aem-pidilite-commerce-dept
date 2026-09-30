@@ -1,0 +1,35 @@
+type Query {
+    customerSuggestions(pageSize: Int = 20, currentPage: Int = 1): CustomerSuggestionsResult
+    @resolver(class: "Embitel\\CustomerSuggestion\\Model\\Resolver\\Suggestions")
+}
+
+type Mutation {
+    createCustomerSuggestion(input: CreateCustomerSuggestionInput!): CustomerSuggestion
+    @resolver(class: "Embitel\\CustomerSuggestion\\Model\\Resolver\\CreateSuggestion")
+}
+
+input CreateCustomerSuggestionInput {
+    suggestion: String!
+}
+
+type CustomerSuggestion {
+    entity_id: Int
+    user_id: Int
+    user_name: String
+    user_email: String
+    suggestion: String
+    created_at: String
+    updated_at: String
+}
+
+type CustomerSuggestionsResult {
+    items: [CustomerSuggestion]
+    total_count: Int
+    page_info: SearchResultPageInfo
+}
+
+type SearchResultPageInfo {
+    page_size: Int
+    current_page: Int
+    total_pages: Int
+}

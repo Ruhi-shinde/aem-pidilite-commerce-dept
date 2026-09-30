@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">embitel_customersuggestion_suggestion_form.customersuggestion_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Embitel\CustomerSuggestion\Block\Adminhtml\Suggestion\Edit\BackButton"/>
+            <!--<button name="delete" class="Embitel\CustomerSuggestion\Block\Adminhtml\Suggestion\Edit\DeleteButton"/>
+            <button name="save" class="Embitel\CustomerSuggestion\Block\Adminhtml\Suggestion\Edit\SaveButton"/>
+            <button name="save_and_continue" class="Embitel\CustomerSuggestion\Block\Adminhtml\Suggestion\Edit\SaveAndContinueButton"/>-->
+        </buttons>
+        <namespace>embitel_customersuggestion_suggestion_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>embitel_customersuggestion_suggestion_form.customersuggestion_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="customersuggestion_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+        <dataProvider name="customersuggestion_form_data_source"
+                      class="Embitel\CustomerSuggestion\Model\CustomerSuggestion\DataProvider">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label translate="true">General</label>
+        </settings>
+        <field name="entity_id" formElement="input" sortOrder="10">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Entity ID</label>
+                <dataScope>entity_id</dataScope>
+                <disabled>true</disabled>
+            </settings>
+        </field>
+        <field name="user_id" formElement="input" sortOrder="20">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">User ID</label>
+                <dataScope>user_id</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <disabled>true</disabled>
+            </settings>
+        </field>
+        <field name="user_name" formElement="input" sortOrder="30">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">User Name</label>
+                <dataScope>user_name</dataScope>
+                <disabled>true</disabled>
+            </settings>
+        </field>
+        <field name="suggestion" formElement="textarea" sortOrder="40">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Suggestion</label>
+                <dataScope>suggestion</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <disabled>true</disabled>
+            </settings>
+        </field>
+        <field name="created_at" formElement="input" sortOrder="50">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Created At</label>
+                <dataScope>created_at</dataScope>
+                <disabled>true</disabled>
+            </settings>
+        </field>
+        <field name="updated_at" formElement="input" sortOrder="60">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Updated At</label>
+                <dataScope>updated_at</dataScope>
+                <disabled>true</disabled>
+            </settings>
+        </field>
+    </fieldset>
+</form>

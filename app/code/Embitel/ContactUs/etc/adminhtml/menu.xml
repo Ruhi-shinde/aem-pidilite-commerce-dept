@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Embitel_ContactUs::contact_us_menu"
+             title="Contact Us"
+             module="Embitel_ContactUs"
+             sortOrder="115"
+             parent="Embitel::top_level"
+             action="embitel_contactus/contact/index"
+             resource="Embitel_ContactUs::contact_us_view"/>
+    </menu>
+</config>

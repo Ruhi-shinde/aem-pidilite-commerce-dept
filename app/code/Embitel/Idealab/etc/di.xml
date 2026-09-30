@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Embitel\Idealab\Api\IdealabRepositoryInterface"
+                type="Embitel\Idealab\Model\IdealabRepository"/>
+
+    <preference for="Embitel\Idealab\Api\Data\IdealabInterface"
+                type="Embitel\Idealab\Model\Idealab"/>
+
+    <preference for="Embitel\Idealab\Api\Data\IdealabSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+
+    <type name="Embitel\Idealab\Model\IdealabRepository">
+        <plugin name="embitel_idealab_apply_store_code_from_header"
+                type="Embitel\Idealab\Plugin\ApplyStoreCodeFromHeader"
+                sortOrder="10"/>
+    </type>
+
+
+    <type name="Embitel\Idealab\Model\ResourceModel\Idealab\Grid\Collection">
+
+        <arguments>
+            <argument name="mainTable" xsi:type="string">embitel_idealab_idealab</argument>
+
+            <argument name="resourceModel" xsi:type="string">
+                Embitel\Idealab\Model\ResourceModel\Idealab
+            </argument>
+        </arguments>
+
+    </type>
+
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="embitel_idealab_idealab_listing_data_source"
+                      xsi:type="string">
+                    Embitel\Idealab\Model\ResourceModel\Idealab\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

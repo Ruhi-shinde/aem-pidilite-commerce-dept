@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Embitel_Idealab::idealab" title="Idea Lab" sortOrder="20">
+					<resource id="Embitel_Idealab::idealab_save" title="Save Idea Lab" sortOrder="10"/>
+					<resource id="Embitel_Idealab::idealab_update" title="Update Idea Lab" sortOrder="20"/>
+					<resource id="Embitel_Idealab::idealab_view" title="View Idea Lab" sortOrder="30"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

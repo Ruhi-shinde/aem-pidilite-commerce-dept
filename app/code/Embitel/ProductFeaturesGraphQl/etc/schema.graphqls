@@ -1,0 +1,17 @@
+type FeatureSample {
+    id: Int!
+    title: String!
+    url: String!
+    updated_at: String
+    sort_order: Int!
+}
+
+interface ProductInterface {
+    features: [FeatureSample!]!
+        @resolver(
+            class: "Embitel\\ProductFeaturesGraphQl\\Model\\Resolver\\FeatureSamples"
+        )
+        @doc(
+            description: "Custom product sample files."
+        )
+}

@@ -1,0 +1,3 @@
+extend type DownloadableProductSamples {
+    updated_at: String @doc(description: "Product Document Updated Date.")
+}

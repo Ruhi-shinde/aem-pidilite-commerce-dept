@@ -1,0 +1,30 @@
+interface ProductInterface {
+    custom_attributes_group: [CustomGroupAttribute]
+        @resolver(class: "Embitel\\CustomAttributesGraphQl\\Model\\Resolver\\CustomAttributes")
+        @doc(description: "Returns attributes assigned to the Custom Attributes attribute group")
+    solution_type_label: String @resolver(class: "Embitel\\CustomAttributesGraphQl\\Model\\Resolver\\ProductAttributeText")    
+    persona_benefits: [PersonaBenefitsAttribute]
+        @resolver(class: "Embitel\\CustomAttributesGraphQl\\Model\\Resolver\\PersonaBenefits")
+        @doc(description: "Returns attributes assigned to the Persona Benefits attribute group")
+    specification: [CustomGroupAttribute]
+        @resolver(class: "Embitel\\CustomAttributesGraphQl\\Model\\Resolver\\SpecificationAttributes")
+        @doc(description: "Returns attributes assigned to the Specification Attributes attribute group")
+}
+
+type CustomGroupAttribute {
+    code: String!
+    label: String
+    value: String
+    raw_value: String
+    frontend_input: String
+    sort_order: Int
+}
+
+type PersonaBenefitsAttribute {
+    code: String!
+    label: String
+    value: String
+    raw_value: String
+    frontend_input: String
+    sort_order: Int
+}

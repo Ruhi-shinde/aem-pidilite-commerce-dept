@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Fevicreate_Core::menu" title="Fevicreate" module="Fevicreate_Core" sortOrder="30" resource="Fevicreate_Core::menu"/>        
+    </menu>
+</config>

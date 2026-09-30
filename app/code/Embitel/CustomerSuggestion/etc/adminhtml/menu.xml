@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Embitel_CustomerSuggestion::customer_suggestion_menu"
+             title="Customer Suggestions"
+             module="Embitel_CustomerSuggestion"
+             sortOrder="110"
+             parent="Embitel::top_level"
+             action="embitel_customersuggestion/suggestion/index"
+             resource="Embitel_CustomerSuggestion::customer_suggestion_view"/>
+    </menu>
+</config>

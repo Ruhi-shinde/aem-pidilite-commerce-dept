@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route url="/V1/embitel-idealab/idealab" method="POST">
+		<service class="Embitel\Idealab\Api\IdealabRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Embitel_Idealab::idealab_save"/>
+		</resources>
+	</route>
+	<route url="/V1/embitel-idealab/idealab/search" method="GET">
+		<service class="Embitel\Idealab\Api\IdealabRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Embitel_Idealab::idealab_view"/>
+		</resources>
+	</route>
+	<route url="/V1/embitel-idealab/idealab/:idealabId" method="GET">
+		<service class="Embitel\Idealab\Api\IdealabRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Embitel_Idealab::idealab_view"/>
+		</resources>
+	</route>
+	<route url="/V1/embitel-idealab/idealab/:idealabId" method="PUT">
+		<service class="Embitel\Idealab\Api\IdealabRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Embitel_Idealab::idealab_update"/>
+		</resources>
+	</route>
+</routes>

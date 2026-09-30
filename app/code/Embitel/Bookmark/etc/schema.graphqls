@@ -1,0 +1,81 @@
+type Mutation {
+    createBookmark(
+        input: CreateBookmark!
+    ): BookmarkOutput
+    @resolver(class: "Embitel\\Bookmark\\Model\\Resolver\\CreateBookmark")
+
+    updateBookmark(
+        input: UpdateBookmark!
+    ): BookmarkOutput
+    @resolver(class: "Embitel\\Bookmark\\Model\\Resolver\\UpdateBookmark")
+
+    deleteBookmark(
+        entity_id: String!
+    ): DeleteBookmarkOutput
+    @resolver(class: "Embitel\\Bookmark\\Model\\Resolver\\DeleteBookmark")
+}
+
+input CreateBookmark {
+    bookmark_id: String!
+    child_id: String
+    content_type: String!
+    content_name: String!
+}
+
+input UpdateBookmark {
+    entity_id: String!
+    user_id: String
+    bookmark_id: String
+    child_id: String
+    content_type: String
+    content_name: String
+}
+
+input BookmarkFilterInput {
+    entity_id: String
+    user_id: String
+    bookmark_id: String
+    child_id: String
+    content_type: String
+    content_name: String
+}
+
+type BookmarkOutput {
+    success: Boolean
+    message: String
+    bookmark: Bookmark
+}
+
+type DeleteBookmarkOutput {
+    success: Boolean
+    message: String
+}
+
+type Query {
+    bookmark(
+        entity_id: String!
+    ): Bookmark
+    @resolver(class: "Embitel\\Bookmark\\Model\\Resolver\\Bookmark")
+    @doc(description: "Get bookmark by entity ID")
+
+    bookmarksByUserId: [Bookmark]
+    @resolver(class: "Embitel\\Bookmark\\Model\\Resolver\\BookmarksByUserId")
+    @doc(description: "Get bookmarks by user ID")
+
+    bookmarks(
+        filter: BookmarkFilterInput
+    ): [Bookmark]
+    @resolver(class: "Embitel\\Bookmark\\Model\\Resolver\\Bookmarks")
+    @doc(description: "Get all bookmarks (optionally filtered)")
+}
+
+type Bookmark {
+    entity_id: String
+    user_id: String
+    bookmark_id: String
+    child_id: String
+    content_type: String
+    content_name: String
+    created_at: String
+    updated_at: String
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="embitel_idealab_idealab" resource="default" engine="innodb" comment="embitel_idealab_idealab Table">
+		<column xsi:type="int" name="idealab_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="idealab_id"/>
+		</constraint>
+		<column name="user_id" nullable="false" xsi:type="int" unsigned="true" comment="user_id" identity="false"/>
+		<index referenceId="EMBITEL_IDEALAB_IDEALAB_USER_ID" indexType="btree">
+			<column name="user_id"/>
+		</index>
+		<column name="student_first_name" nullable="false" xsi:type="varchar" comment="student_first_name" length="255"/>
+		<column name="student_last_name" nullable="false" xsi:type="varchar" comment="student_last_name" length="255"/>
+		<column name="student_date_of_birth" nullable="false" xsi:type="date" comment="student_date_of_birth"/>
+		<column name="student_school_name" nullable="false" xsi:type="varchar" comment="student_school_name" length="255"/>
+		<column name="gender" nullable="false" xsi:type="varchar" comment="gender" length="50"/>
+		<column name="grade_group" nullable="false" xsi:type="varchar" comment="grade_group" length="50"/>
+		<column name="parent_email" nullable="false" xsi:type="varchar" comment="parent_email" length="255"/>
+		<column name="parent_phone" nullable="false" xsi:type="varchar" comment="parent_phone" length="50"/>
+		<column name="project_title" nullable="false" xsi:type="varchar" comment="project_title" length="255"/>
+		<column name="video_url" nullable="true" xsi:type="text" comment="video_url"/>
+		<column name="craft_image" nullable="true" xsi:type="text" comment="craft_image"/>
+		<column name="project_description" nullable="false" xsi:type="text" comment="project_description"/>
+		<column name="i_accept" nullable="false" xsi:type="smallint" default="0" comment="i_accept"/>
+		<column name="created_at" nullable="false" xsi:type="timestamp" default="CURRENT_TIMESTAMP" on_update="false" comment="created_at"/>
+		<column name="updated_at" nullable="false" xsi:type="timestamp" default="CURRENT_TIMESTAMP" on_update="true" comment="updated_at"/>
+	</table>
+</schema>

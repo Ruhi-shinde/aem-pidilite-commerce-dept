@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Embitel_Contest::Contest" title="Contest" sortOrder="10">
+					<resource id="Embitel_Contest::Contest_save" title="Save Contest" sortOrder="10"/>
+					<resource id="Embitel_Contest::Contest_update" title="Update Contest" sortOrder="20"/>
+					<resource id="Embitel_Contest::Contest_view" title="View Contest" sortOrder="30"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

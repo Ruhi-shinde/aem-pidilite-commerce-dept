@@ -1,0 +1,42 @@
+
+type StoreConfig {
+    otp_resend_time : String @doc(description: "Remaining time to resend new OTP.")
+}
+
+type Mutation {
+    sendOTP(
+        email: String
+        phone: String
+        resend: Boolean @doc(description: "Flag to resend OTP.")
+    ): SendOTPOutput @resolver(class: "\\Fevicreate\\CustomerLoginOtpGraphQl\\Model\\Resolver\\SendOTP")
+    @doc(description:"Send OTP to specified customer's phone number.")
+}
+
+type Query {
+    validateOtp (
+        email: String
+        phone: String
+        otp: String @doc(description: "The customer's OTP.")
+        event: String @doc(description: "login or registration")
+    ): ValidateOtpOutput @resolver(class: "Fevicreate\\CustomerLoginOtpGraphQl\\Model\\Resolver\\ValidateOtp")
+    @doc(description: "validate OTP against given customer phone number.")
+}
+
+type SendOTPOutput @doc(description: "Contains the result of the `sendOTP` mutation.") {
+    success: Boolean @doc(description: "success or failed.")
+    email: String @doc(description: "The customer email address.")
+    phone: String @doc(description: "The customer's phone number.")
+    otp: String @doc(description: "The customer's OTP.")
+    try_email: Boolean @doc(description: "Try with email.")
+    message: String @doc(description: "Message for OTP.")
+    resend_time: String @doc(description: "Time to re-send OTP in second.")
+}
+
+type ValidateOtpOutput @doc(description: "Contains the result of the `validateOtp` query.") {
+    email: String @doc(description: "The customer email address.")
+    phone: String @doc(description: "The customer's phone number.")
+    success: Boolean @doc(description: "Indicates whether the specified OTP is valid or not.")
+    message: String @doc(description: "Message for OTP validation.")
+    token: String @doc(description: "The customer authorization token.")
+    customer: Customer @doc(description: "Return detailed information about a customer account.")
+}
