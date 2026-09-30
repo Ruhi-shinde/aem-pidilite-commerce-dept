@@ -1,0 +1,138 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">embitel_idealab_idealab_listing.embitel_idealab_idealab_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>embitel_idealab_idealab_columns</spinner>
+		<deps>
+			<dep>embitel_idealab_idealab_listing.embitel_idealab_idealab_listing_data_source</dep>
+		</deps>
+		<!--<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add new Idea Lab</label>
+			</button>
+		</buttons>-->
+	</settings>
+	<dataSource name="embitel_idealab_idealab_listing_data_source" component="Magento_Ui/js/grid/provider">
+		<settings>
+			<storageConfig>
+				<param name="indexField" xsi:type="string">idealab_id</param>
+			</storageConfig>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Embitel_Idealab::idealab</aclResource>
+		<dataProvider name="embitel_idealab_idealab_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>idealab_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<exportButton name="export_button">
+			<settings>
+				<options>
+					<option name="csv" xsi:type="array">
+						<item name="value" xsi:type="string">csv</item>
+						<item name="label" xsi:type="string" translate="true">CSV</item>
+					</option>
+					<option name="xml" xsi:type="array">
+						<item name="value" xsi:type="string">xml</item>
+						<item name="label" xsi:type="string" translate="true">Excel XML</item>
+					</option>
+				</options>
+			</settings>
+		</exportButton>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="embitel_idealab_idealab_columns">
+		<settings>
+			<editorConfig>
+				<param name="enabled" xsi:type="boolean">true</param>
+				<param name="indexField" xsi:type="string">idealab_id</param>
+				<param name="clientConfig" xsi:type="array">
+					<item name="saveUrl" xsi:type="url" path="embitel_idealab/idealab/inlineEdit"/>
+					<item name="validateBeforeSave" xsi:type="boolean">false</item>
+				</param>
+			</editorConfig>
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">embitel_idealab_idealab_listing.embitel_idealab_idealab_listing.embitel_idealab_idealab_columns_editor</item>
+					<item name="target" xsi:type="string">startEdit</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+						<item name="1" xsi:type="boolean">true</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>idealab_id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="idealab_id">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="user_id">
+			<settings><filter>text</filter><label translate="true">User ID</label></settings>
+		</column>
+		<column name="user_name">
+			<settings><filter>text</filter><label translate="true">User Name</label></settings>
+		</column>
+		<column name="user_email">
+			<settings><filter>text</filter><label translate="true">User Email</label></settings>
+		</column>
+		<column name="student_first_name">
+			<settings><filter>text</filter><label translate="true">Student First Name</label></settings>
+		</column>
+		<column name="student_last_name">
+			<settings><filter>text</filter><label translate="true">Student Last Name</label></settings>
+		</column>
+		<column name="gender">
+		<settings><filter>text</filter><label translate="true">Gender</label></settings>
+	    </column>
+		<column name="grade_group">
+			<settings><filter>text</filter><label translate="true">Grade Group</label></settings>
+		</column>
+		<column name="parent_email">
+			<settings><filter>text</filter><label translate="true">Parent Email</label></settings>
+		</column>
+		<column name="project_title">
+			<settings><filter>text</filter><label translate="true">Project Title</label></settings>
+		</column>
+		<column name="i_accept" component="Magento_Ui/js/grid/columns/select">
+			<settings>
+				<filter>select</filter>
+				<dataType>select</dataType>
+				<label translate="true">I Accept</label>
+				<options class="Embitel\Idealab\Model\Source\TrueFalse"/>
+			</settings>
+		</column>
+		<column name="created_at">
+			<settings><filter>dateRange</filter><label translate="true">Created At</label></settings>
+		</column>
+		<actionsColumn name="actions" class="Embitel\Idealab\Ui\Component\Listing\Column\IdealabActions">
+			<settings>
+				<indexField>idealab_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+	</columns>
+</listing>

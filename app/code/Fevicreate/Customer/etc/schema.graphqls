@@ -1,0 +1,34 @@
+input CustomerCreateInput {
+    customer_children: [CustomerChildrenInput!] @doc(description: "Children for customer")
+}
+
+input CustomerUpdateInput {
+    customer_children: [CustomerChildrenInput!] @doc(description: "Children for customer")
+}
+
+
+input CustomerChildrenInput {
+    child_id: Int
+    name: String
+    date_of_birth: String
+    school: String
+}
+
+type Customer {
+    customer_children: [CustomerChildrenOutput!] @resolver(class: "Fevicreate\\Customer\\Model\\Resolver\\CustomerChildren") @doc(description: "Returns all children of customer")
+    custom_attributes: [CustomerCustomAttributesOutput] @resolver(class: "Fevicreate\\Customer\\Model\\Resolver\\CustomerCustomAttributes") @doc(description: "Returns all custom EAV attributes for the customer")
+}
+
+type CustomerChildrenOutput {
+    child_id: Int
+    customer_id: Int
+    name: String
+    date_of_birth: String
+    school: String
+}
+
+type CustomerCustomAttributesOutput {
+    attribute_code: String @doc(description: "The unique code of the custom attribute")
+    label: String @doc(description: "The assigned label of the custom attribute")
+    value: String @doc(description: "The assigned value of the custom attribute")
+}

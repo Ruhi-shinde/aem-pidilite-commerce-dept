@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <customerloginotp>
+            <otp>
+                <otp_format>1</otp_format>
+                <otp_length>6</otp_length>
+                <otp_resend>60</otp_resend>
+                <otp_template><![CDATA[Hey Crafter,Your OTP to register on  Fevicreate is {{OTP}} Lets create something beautiful together! From Pidilite.]]></otp_template>
+            </otp>
+            <email>
+                <sender_email_identity>support</sender_email_identity>
+                <email_template>customerloginotp_email_email_template</email_template>
+            </email>
+            <api>
+                <api_version>2.0</api_version>
+                <campaign_type>TRANSACTIONAL</campaign_type>
+                <content_template_id>1007761681500192770</content_template_id>
+                <principal_entity_id>1201158073307569826</principal_entity_id>
+            </api>
+        </customerloginotp>
+    </default>
+</config>

@@ -1,0 +1,27 @@
+type Query {
+    categoryList(category_id: Int): [CategoryList] @resolver(class: "\\Embitel\\ProductPurchase\\Model\\Resolver\\CategoryList") @doc(description: "Fetch Categories")
+}
+
+type CategoryList {
+    id: Int
+    name: String
+    url: String
+    url_key: String
+    description: String
+    image: String
+    has_children: Boolean
+    product_url: String
+    product_url_key: String
+}
+
+interface ProductInterface {
+    product_pdf: String @doc(description: "Product custom attribute.") @resolver(class: "\\Embitel\\ProductPurchase\\Model\\Resolver\\Products\\ProductAttributes")
+}
+
+extend type CategoryTree {
+    is_standard_solution: Int @resolver(class: "Embitel\\ProductPurchase\\Model\\Resolver\\Category\\IsStandard")
+    product_url: String @resolver(class: "Embitel\\ProductPurchase\\Model\\Resolver\\Category\\ProductData")
+    product_url_key: String @resolver(class: "Embitel\\ProductPurchase\\Model\\Resolver\\Category\\ProductData")
+}
+
+

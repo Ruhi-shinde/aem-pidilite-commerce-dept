@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route url="/V1/embitel-contest/contest" method="POST">
+		<service class="Embitel\Contest\Api\ContestRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Embitel_Contest::Contest_save"/>
+		</resources>
+	</route>
+	<route url="/V1/embitel-contest/contest/search" method="GET">
+		<service class="Embitel\Contest\Api\ContestRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Embitel_Contest::Contest_view"/>
+		</resources>
+	</route>
+	<route url="/V1/embitel-contest/contest/:contestId" method="GET">
+		<service class="Embitel\Contest\Api\ContestRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Embitel_Contest::Contest_view"/>
+		</resources>
+	</route>
+	<route url="/V1/embitel-contest/contest/:contestId" method="PUT">
+		<service class="Embitel\Contest\Api\ContestRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Embitel_Contest::Contest_update"/>
+		</resources>
+	</route>
+</routes>

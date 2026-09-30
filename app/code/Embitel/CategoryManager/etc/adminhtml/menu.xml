@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:backend:etc/menu.xsd">
+    <menu>
+        <add id="Embitel_CategoryManager::categories" title="Solutions" module="Embitel_CategoryManager" sortOrder="20" action="vse_category/category/index" resource="Embitel_CategoryManager::categories"/>
+    </menu>
+</config>

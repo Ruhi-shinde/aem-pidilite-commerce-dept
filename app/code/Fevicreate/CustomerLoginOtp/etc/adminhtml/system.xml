@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="fevicreate" translate="label" sortOrder="100">
+            <label><![CDATA[Fevicreate]]></label>
+        </tab>
+        <section id="customerloginotp" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Customer Login OTP</label>
+            <tab>fevicreate</tab>
+            <resource>Fevicreate_CustomerLoginOtp::otp</resource>
+            <group id="otp" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>OTP Options</label>
+                <field id="otp_format" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>OTP Format</label>
+                    <source_model>Fevicreate\CustomerLoginOtp\Model\Config\Source\Format</source_model>
+                </field>
+                <field id="otp_length" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>OTP Length</label>
+                    <validate>required-entry validate-digits validate-zero-or-greater validate-digits-range digits-range-0-6</validate>
+                    <comment>OTP Length.</comment>
+                </field>
+                <field id="otp_resend" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Time to Resend OTP</label>
+                    <validate>required-entry validate-digits validate-zero-or-greater validate-digits-range digits-range-0-60</validate>
+                    <comment>Time in seconds.</comment>
+                </field>
+                <field id="otp_template" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>OTP Message Template</label>
+                    <validate>required-entry</validate>
+                    <comment>Message template.</comment>
+                </field>
+            </group>
+
+            <group id="api" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>OTP API</label>
+                <field id="endpoint" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>API Endpoint</label>
+                    <validate>required-entry validate-url</validate>
+                </field>
+                <field id="key" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>API Authorization</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="sender" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Sender Identity</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="api_version" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>API Version</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="campaign_type" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Campaign Type</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="content_template_id" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Content Template Id</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="principal_entity_id" translate="label" type="text" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Principal Entity Id</label>
+                    <validate>required-entry</validate>
+                </field>
+            </group>
+
+            <group id="email" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Email Options</label>
+                <field id="sender_email_identity" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                    <depends>
+                        <field id="*/loginemailotp/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="email_template" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Email Template</label>
+                    <comment>Email template chosen based on theme fallback when "Default" option is selected.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <depends>
+                        <field id="*/loginemailotp/enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

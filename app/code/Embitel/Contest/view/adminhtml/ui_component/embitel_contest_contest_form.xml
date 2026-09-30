@@ -1,0 +1,231 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">embitel_contest_contest_form.contest_form_data_source</item>
+		</item>
+		<item name="label" xsi:type="string" translate="true">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button name="back" class="Embitel\Contest\Block\Adminhtml\Contest\Edit\BackButton"/>
+			<!--<button name="delete" class="Embitel\Contest\Block\Adminhtml\Contest\Edit\DeleteButton"/>
+			<button name="save" class="Embitel\Contest\Block\Adminhtml\Contest\Edit\SaveButton"/>
+			<button name="save_and_continue" class="Embitel\Contest\Block\Adminhtml\Contest\Edit\SaveAndContinueButton"/>-->
+		</buttons>
+		<namespace>embitel_contest_contest_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>embitel_contest_contest_form.contest_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="contest_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider name="contest_form_data_source" class="Embitel\Contest\Model\Contest\DataProvider">
+			<settings>
+				<requestFieldName>contest_id</requestFieldName>
+				<primaryFieldName>contest_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label>General</label>
+		</settings>
+		<field name="contest_name" formElement="textarea" sortOrder="10">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contest</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">contest_name</label>
+				<dataScope>contest_name</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+				<disabled>true</disabled>
+			</settings>
+		</field>
+		<field name="contest_title" formElement="input" sortOrder="15">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contest</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">contest_title</label>
+				<dataScope>contest_title</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+				<disabled>true</disabled>
+			</settings>
+		</field>
+		<field name="user_id" formElement="input" sortOrder="20">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contest</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">user_id</label>
+				<dataScope>user_id</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+				<disabled>true</disabled>
+			</settings>
+		</field>
+		<field name="child_name" formElement="input" sortOrder="30">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contest</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">child_name</label>
+				<dataScope>child_name</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+				<disabled>true</disabled>
+			</settings>
+		</field>
+		<field name="parent_email" formElement="input" sortOrder="40">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contest</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">parent_email</label>
+				<dataScope>parent_email</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+				<disabled>true</disabled>
+			</settings>
+		</field>
+		<field name="parent_phone" formElement="input" sortOrder="50">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contest</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">parent_phone</label>
+				<dataScope>parent_phone</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+				<disabled>true</disabled>
+			</settings>
+		</field>
+		<field name="artwork_title" formElement="input" sortOrder="60">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contest</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">artwork_title</label>
+				<dataScope>artwork_title</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+				<disabled>true</disabled>
+			</settings>
+		</field>
+		<field name="banner_image" formElement="input" sortOrder="70">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contest</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">banner_image</label>
+				<dataScope>banner_image</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+				<disabled>true</disabled>
+			</settings>
+		</field>
+		<field name="cta_link" formElement="input" sortOrder="75">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contest</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">cta_link</label>
+				<dataScope>cta_link</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+				<disabled>true</disabled>
+			</settings>
+		</field>
+		<field name="description" formElement="textarea" sortOrder="80">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contest</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">description</label>
+				<dataScope>description</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+				<disabled>true</disabled>
+			</settings>
+		</field>
+		<field name="documents" formElement="imageUploader" sortOrder="90">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contest</item>
+				</item>
+			</argument>
+			<settings>
+				<elementTmpl>ui/form/element/uploader/image</elementTmpl>
+				<dataType>string</dataType>
+				<label translate="true">documents</label>
+				<dataScope>documents</dataScope>
+				<disabled>true</disabled>
+			</settings>
+			<formElements>
+				<imageUploader>
+					<settings>
+						<required>false</required>
+						<uploaderConfig>
+							<param xsi:type="url" name="url" path="mui/index/render"/>
+						</uploaderConfig>
+						<previewTmpl>Magento_Catalog/image-preview</previewTmpl>
+						<allowedExtensions>jpg jpeg png gif webp</allowedExtensions>
+						<isMultipleFiles>true</isMultipleFiles>
+					</settings>
+				</imageUploader>
+			</formElements>
+		</field>
+	</fieldset>
+</form>

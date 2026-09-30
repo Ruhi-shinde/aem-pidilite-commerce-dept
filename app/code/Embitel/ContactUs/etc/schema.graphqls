@@ -1,0 +1,66 @@
+type Query {
+    contactUsEntries(pageSize: Int = 20, currentPage: Int = 1): ContactUsResult
+    @resolver(class: "Embitel\\ContactUs\\Model\\Resolver\\ContactUsList")
+
+    contactUsById(entity_id: Int!): ContactUs
+    @resolver(class: "Embitel\\ContactUs\\Model\\Resolver\\ContactUsById")
+}
+
+type Mutation {
+    createContactUs(input: CreateContactUsInput!): ContactUs
+    @resolver(class: "Embitel\\ContactUs\\Model\\Resolver\\CreateContactUs")
+
+    updateContactUs(input: UpdateContactUsInput!): ContactUs
+    @resolver(class: "Embitel\\ContactUs\\Model\\Resolver\\UpdateContactUs")
+
+    deleteContactUs(entity_id: Int!): DeleteContactUsOutput
+    @resolver(class: "Embitel\\ContactUs\\Model\\Resolver\\DeleteContactUs")
+}
+
+input CreateContactUsInput {
+    first_name: String!
+    last_name: String!
+    city: String!
+    email_id: String!
+    mobile_number: String!
+    message: String!
+}
+
+input UpdateContactUsInput {
+    entity_id: Int!
+    first_name: String
+    last_name: String
+    city: String
+    email_id: String
+    mobile_number: String
+    message: String
+}
+
+type ContactUs {
+    entity_id: Int
+    first_name: String
+    last_name: String
+    city: String
+    email_id: String
+    mobile_number: String
+    message: String
+    created_at: String
+    updated_at: String
+}
+
+type ContactUsResult {
+    items: [ContactUs]
+    total_count: Int
+    page_info: ContactUsPageInfo
+}
+
+type ContactUsPageInfo {
+    page_size: Int
+    current_page: Int
+    total_pages: Int
+}
+
+type DeleteContactUsOutput {
+    success: Boolean
+    message: String
+}

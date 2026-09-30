@@ -1,0 +1,17 @@
+{
+    "customer_child": {
+        "column": {
+            "child_id": true,
+            "customer_id": true,
+            "name": true,
+            "date_of_birth": true,            
+            "school": true,
+            "creation_time": true,
+            "update_time": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "CUTOMER_CHILD_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true
+        }
+    }
+}

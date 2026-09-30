@@ -1,0 +1,33 @@
+extend type Query {
+    categories(
+        filters: CategoryFilterInput
+    ): CategoryRootOutput @resolver(class: "Embitel\\CategoryManager\\Model\\Resolver\\CategorySplitList")
+}
+
+type CategoryRootOutput {
+    total_count: Int
+    items: CategoryItemsContainer
+}
+
+type CategoryItemsContainer {
+    standard: [CategoryNode]
+    special: [CategoryNode]
+}
+
+type CategoryNode {
+    id: Int
+    name: String
+    slug: String @resolver(class: "Embitel\\CategoryManager\\Model\\Resolver\\CategoryUrlKey")
+    description: String
+    category_type: String
+    recommendations: String
+    include_in_menu: Int
+    updated_at: String
+    level: Int
+    is_standard: Int
+    product_count: Int
+    image: String
+    category_banner: String
+    products: CategoryProducts
+    children: [CategoryNode]
+}

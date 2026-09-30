@@ -1,0 +1,63 @@
+type Mutation {
+    createIdealab(
+        input: CreateIdealab!
+    ): CreateIdealabOutput
+    @resolver(class: "Embitel\\Idealab\\Model\\Resolver\\CreateIdealab")
+}
+
+input CreateIdealab {
+    student_first_name: String!
+    student_last_name: String!
+    student_date_of_birth: String!
+    student_school_name: String!
+    gender: String!
+    grade_group: String!
+    parent_email: String!
+    parent_phone: String!
+    project_title: String!
+    video_url: String
+    craft_image: [String!]
+    project_description: String!
+    i_accept: Boolean!
+}
+
+type CreateIdealabOutput {
+    success: Boolean
+    message: String
+    idealab: Idealab
+}
+
+type Query {
+    idealab(
+        idealab_id: String!
+    ): Idealab
+    @resolver(class: "Embitel\\Idealab\\Model\\Resolver\\Idealab")
+    @doc(description: "Get idealab by ID")
+
+    idealabs: [Idealab]
+    @resolver(class: "Embitel\\Idealab\\Model\\Resolver\\Idealabs")
+    @doc(description: "Get all idealabs")
+
+    idealabsByUserId: [Idealab]
+    @resolver(class: "Embitel\\Idealab\\Model\\Resolver\\IdealabsByUserId")
+}
+
+type Idealab {
+    idealab_id: String
+    user_id: String
+    student_first_name: String
+    student_last_name: String
+    student_date_of_birth: String
+    student_school_name: String
+    gender: String
+    grade_group: String
+    parent_email: String
+    parent_phone: String
+    project_title: String
+    video_url: String
+    craft_image: [String]
+    project_description: String
+    i_accept: Boolean
+    created_at: String
+    updated_at: String
+}

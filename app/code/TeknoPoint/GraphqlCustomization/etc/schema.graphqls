@@ -1,0 +1,8 @@
+interface ProductInterface @typeResolver(class: "Magento\\CatalogGraphQl\\Model\\ProductInterfaceTypeResolverComposite") @doc(description: "The ProductInterface contains attributes that are common to all types of products. Note that descriptions may not be available for custom and EAV attributes.") {
+    custom_attributes: [CustomAttribute] @doc(description: "Custom Attribute based on manufacturer attribute") @resolver(class: "TeknoPoint\\GraphqlCustomization\\Model\\Resolver\\Product\\ProductAttributionResolver")
+}
+
+type CustomAttribute @doc(description: "Contains information about a store's configuration.") {
+    code : String @doc(description: "The attribute_code assigned to the website store.")
+    value : String @doc(description: "The attribute_value number assigned to the website store.")
+}

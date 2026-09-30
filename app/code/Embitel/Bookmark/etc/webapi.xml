@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/embitel-bookmark/bookmark" method="POST">
+        <service class="Embitel\Bookmark\Api\BookmarkRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Embitel_Bookmark::bookmark_save"/>
+        </resources>
+    </route>
+    <route url="/V1/embitel-bookmark/bookmark/search" method="GET">
+        <service class="Embitel\Bookmark\Api\BookmarkRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Embitel_Bookmark::bookmark_view"/>
+        </resources>
+    </route>
+    <route url="/V1/embitel-bookmark/bookmark/:entityId" method="GET">
+        <service class="Embitel\Bookmark\Api\BookmarkRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Embitel_Bookmark::bookmark_view"/>
+        </resources>
+    </route>
+    <route url="/V1/embitel-bookmark/bookmark/:entityId" method="PUT">
+        <service class="Embitel\Bookmark\Api\BookmarkRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Embitel_Bookmark::bookmark_update"/>
+        </resources>
+    </route>
+</routes>

@@ -1,0 +1,130 @@
+<?xml version="1.0" ?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                embitel_bookmark_bookmark_form.bookmark_form_data_source
+            </item>
+        </item>
+
+        <item name="label" xsi:type="string" translate="true">
+            General Information
+        </item>
+
+        <item name="template" xsi:type="string">
+            templates/form/collapsible
+        </item>
+    </argument>
+
+    <settings>
+
+        <buttons>
+            <button name="back"
+                    class="Embitel\Bookmark\Block\Adminhtml\Bookmark\Edit\BackButton"/>
+
+            <!--<button name="delete"
+                    class="Embitel\Bookmark\Block\Adminhtml\Bookmark\Edit\DeleteButton"/>
+
+            <button name="save"
+                    class="Embitel\Bookmark\Block\Adminhtml\Bookmark\Edit\SaveButton"/>
+
+            <button name="save_and_continue"
+                    class="Embitel\Bookmark\Block\Adminhtml\Bookmark\Edit\SaveAndContinueButton"/>-->
+        </buttons>
+
+        <namespace>embitel_bookmark_bookmark_form</namespace>
+
+        <dataScope>data</dataScope>
+
+        <deps>
+            <dep>
+                embitel_bookmark_bookmark_form.bookmark_form_data_source
+            </dep>
+        </deps>
+
+    </settings>
+
+    <dataSource name="bookmark_form_data_source">
+
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">
+                    Magento_Ui/js/form/provider
+                </item>
+            </item>
+        </argument>
+
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+
+        <dataProvider
+            name="bookmark_form_data_source"
+            class="Embitel\Bookmark\Model\Bookmark\DataProvider">
+
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+
+        </dataProvider>
+
+    </dataSource>
+
+    <fieldset name="general">
+
+        <settings>
+            <label translate="true">General</label>
+        </settings>
+
+        <field name="user_id" formElement="input" sortOrder="10">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">User ID</label>
+                <dataScope>user_id</dataScope>
+                <disabled>true</disabled>
+            </settings>
+        </field>
+
+        <field name="bookmark_id" formElement="input" sortOrder="20">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Bookmark ID</label>
+                <dataScope>bookmark_id</dataScope>
+                <disabled>true</disabled>
+            </settings>
+        </field>
+
+        <field name="child_id" formElement="input" sortOrder="30">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Child ID</label>
+                <dataScope>child_id</dataScope>
+                <disabled>true</disabled>
+            </settings>
+        </field>
+
+        <field name="content_type" formElement="input" sortOrder="40">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Content Type</label>
+                <dataScope>content_type</dataScope>
+                <disabled>true</disabled>
+            </settings>
+        </field>
+
+        <field name="content_name" formElement="input" sortOrder="50">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Content Name</label>
+                <dataScope>content_name</dataScope>
+                <disabled>true</disabled>
+            </settings>
+        </field>
+
+    </fieldset>
+
+</form>

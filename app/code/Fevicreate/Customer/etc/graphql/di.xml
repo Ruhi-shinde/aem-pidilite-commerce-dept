@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://w3.org" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\CustomerGraphQl\Model\Resolver\CreateCustomer">
+        <plugin name="fevicreate_customer_capture_graphql_child"
+                type="Fevicreate\Customer\Plugin\CustomerAccountChildPlugin"
+                sortOrder="10"/>
+    </type>
+
+    <type name="Magento\CustomerGraphQl\Model\Resolver\UpdateCustomer">
+        <plugin name="fevicreate_customer_update_graphql_child"
+                type="Fevicreate\Customer\Plugin\UpdateCustomerAccountChildPlugin"
+                sortOrder="10"/>
+    </type>
+</config>

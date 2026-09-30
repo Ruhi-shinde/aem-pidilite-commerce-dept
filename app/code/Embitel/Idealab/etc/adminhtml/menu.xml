@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Embitel_Idealab::embitel_idealab_idealab" title="Idea Lab" module="Embitel_Idealab" sortOrder="10000" resource="Embitel_Idealab::idealab_view" parent="Embitel::top_level" action="embitel_idealab/idealab/index"/>
+	</menu>
+</config>

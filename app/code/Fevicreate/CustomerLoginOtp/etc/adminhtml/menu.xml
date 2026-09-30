@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Fevicreate_CustomerLoginOtp::customer" title="Customer" module="Fevicreate_CustomerLoginOtp" sortOrder="50" resource="Fevicreate_CustomerLoginOtp::customer" parent="Fevicreate_Core::menu"/>
+        <add id="Fevicreate_CustomerLoginOtp::manage" title="Login OTP" translate="title" module="Fevicreate_CustomerLoginOtp"
+             sortOrder="55" parent="Fevicreate_CustomerLoginOtp::customer" action="customerloginotp/index" resource="Fevicreate_CustomerLoginOtp::manage"/>
+ </menu>
+</config>

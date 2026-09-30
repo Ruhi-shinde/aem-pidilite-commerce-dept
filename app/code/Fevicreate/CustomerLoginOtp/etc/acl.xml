@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Customer::customer">
+                    <resource id="Fevicreate_CustomerLoginOtp::customerloginotp_manage" title="Customer Login Otp Module" sortOrder="10">
+                        <resource id="Fevicreate_CustomerLoginOtp::customerloginotp_delete" title="Delete OTP" sortOrder="20" />
+                    </resource>
+                </resource>
+
+                <!--<resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Fevicreate_CustomerLoginOtp::otp" title="Customer Login OTP Section" translate="title" />
+                        </resource>
+                    </resource>
+                </resource>-->
+            </resource>
+        </resources>
+    </acl>
+</config>

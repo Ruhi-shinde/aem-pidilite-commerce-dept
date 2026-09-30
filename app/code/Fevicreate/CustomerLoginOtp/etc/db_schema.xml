@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="customer_login_otp" resource="default" engine="innodb" comment="Customer Login OTP">
+        <column xsi:type="int" name="otp_id" unsigned="true" nullable="false" identity="true"
+                comment="OTP ID"/>
+        <column xsi:type="int" name="customer_id" unsigned="true" nullable="false" comment="Customer ID"/>
+        <column xsi:type="varchar" name="email" nullable="true" length="255" comment="Email"/>
+        <column xsi:type="varchar" name="phone" nullable="false" length="255" comment="Phone"/>
+        <column xsi:type="varchar" name="otp" nullable="false" length="255" comment="OTP"/>
+        <column xsi:type="varchar" name="event" nullable="false" length="255" comment="Event SingUp or SignIn"/>
+        <column xsi:type="smallint" name="website_id" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Website Id"/>
+        <column xsi:type="smallint" name="expire" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Is OTP Active (O or 1)"/>
+        <column xsi:type="text" name="message" nullable="true" comment="Message"/>
+        <column xsi:type="text" name="response_message" nullable="true" comment="Response"/>
+        <column xsi:type="timestamp" name="creation_time" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="timestamp" name="update_time" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Modification Time"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="otp_id"/>
+        </constraint>
+
+        <constraint xsi:type="foreign" referenceId="CUTOMER_LOGIN_OTP_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID" table="customer_login_otp"
+                    column="customer_id" referenceTable="customer_entity" referenceColumn="entity_id"
+                    onDelete="CASCADE"/>
+
+    </table>
+</schema>
+

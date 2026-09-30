@@ -1,0 +1,74 @@
+type Mutation {
+    createContest(
+        input: CreateContest!
+    ): CreateContestOutput
+    @resolver(class: "Embitel\\Contest\\Model\\Resolver\\CreateContest")
+
+    updateContestTitle(
+        contest_updates: [UpdateContestTitleInput!]!
+    ): UpdateContestTitleOutput
+    @resolver(class: "Embitel\\Contest\\Model\\Resolver\\UpdateAllContestTitlesByContestName")
+
+}
+
+input UpdateContestTitleInput {
+    contest_name: String!
+    contest_title: String!
+}
+
+input CreateContest {
+    contest_name: String @doc(description: "Contest name")
+    contest_title: String @doc(description: "Contest title")
+    banner_image: String @doc(description: "Banner image")
+    cta_link: String @doc(description: "CTA link")
+    child_name: String @doc(description: "Child name")
+    parent_email: String @doc(description: "Parent email")
+    parent_phone: String @doc(description: "Parent phone")
+    artwork_title: String @doc(description: "Artwork title")
+    description: String @doc(description: "Description")
+    documents: [String!] @doc(description: "Documents")
+}
+
+type CreateContestOutput {
+    success: Boolean
+    message: String
+    contest: Contest
+}
+
+type UpdateContestTitleOutput {
+    success: Boolean
+    message: String
+    updated_count: Int
+}
+
+type Query {
+    contest(
+        contest_id: String @doc(description: "Contest ID")
+    ): Contest
+    @resolver(class: "Embitel\\Contest\\Model\\Resolver\\Contest")
+    @doc(description: "Get contest by ID")
+
+    contests: [Contest]
+    @resolver(class: "Embitel\\Contest\\Model\\Resolver\\Contests")
+    @doc(description: "Get all contests")
+
+    contestsByUserId: [Contest]
+    @resolver(class: "Embitel\\Contest\\Model\\Resolver\\ContestsByUserId")
+}
+
+type Contest {
+    contest_id: String
+    user_id: String
+    contest_name: String
+    contest_title: String
+    banner_image: String
+    cta_link: String
+    child_name: String
+    parent_email: String
+    parent_phone: String
+    artwork_title: String
+    description: String
+
+    # IMPORTANT: 3 documents
+    documents: [String]
+}

@@ -1,0 +1,8 @@
+{
+    "downloadable_sample": {
+        "column": {
+            "created_at": true,
+            "updated_at": true
+        }
+    }
+}

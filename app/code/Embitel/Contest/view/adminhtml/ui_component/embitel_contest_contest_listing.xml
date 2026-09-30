@@ -1,0 +1,249 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">embitel_contest_contest_listing.embitel_contest_contest_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>embitel_contest_contest_columns</spinner>
+		<deps>
+			<dep>embitel_contest_contest_listing.embitel_contest_contest_listing_data_source</dep>
+		</deps>
+		<!--<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add new Contest</label>
+			</button>
+		</buttons>-->
+	</settings>
+	<dataSource name="embitel_contest_contest_listing_data_source" component="Magento_Ui/js/grid/provider">
+		<settings>
+			<storageConfig>
+				<param name="indexField" xsi:type="string">contest_id</param>
+			</storageConfig>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Embitel_Contest::Contest</aclResource>
+		<dataProvider name="embitel_contest_contest_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>contest_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+    <settings>
+        <sticky>true</sticky>
+    </settings>
+
+	<bookmark name="bookmarks" sortOrder="10"/>
+
+	<columnsControls name="columns_controls" sortOrder="20"/>
+
+	<exportButton name="export_button" sortOrder="30">
+            <settings>
+                <options>
+                    <option name="csv" xsi:type="array">
+                        <item name="value" xsi:type="string">csv</item>
+                        <item name="label" xsi:type="string" translate="true">CSV</item>
+                    </option>
+                    <option name="xml" xsi:type="array">
+                        <item name="value" xsi:type="string">xml</item>
+                        <item name="label" xsi:type="string" translate="true">Excel XML</item>
+                    </option>
+                </options>
+            </settings>
+        </exportButton>
+
+	<filters name="listing_filters" sortOrder="40"/>
+
+	<paging name="listing_paging" sortOrder="50"/>
+</listingToolbar>
+	<columns name="embitel_contest_contest_columns">
+		<settings>
+			<editorConfig>
+				<param name="enabled" xsi:type="boolean">true</param>
+				<param name="indexField" xsi:type="string">contest_id</param>
+				<param name="clientConfig" xsi:type="array">
+					<item name="saveUrl" xsi:type="url" path="embitel_contest/Contest/inlineEdit"/>
+					<item name="validateBeforeSave" xsi:type="boolean">false</item>
+				</param>
+			</editorConfig>
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">embitel_contest_contest_listing.embitel_contest_contest_listing.embitel_contest_contest_columns_editor</item>
+					<item name="target" xsi:type="string">startEdit</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+						<item name="1" xsi:type="boolean">true</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		<selectionsColumn name="ids" sortOrder="10">
+			<settings>
+				<indexField>contest_id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="contest_id" sortOrder="20">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="contest_name" sortOrder="30">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">contest_name</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="contest_title" sortOrder="40">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">contest_title</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="user_id" sortOrder="50">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">user_id</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="user_name" sortOrder="60">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">user_name</label>
+			</settings>
+		</column>
+		<column name="user_email" sortOrder="70">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">user_email</label>
+			</settings>
+		</column>
+		<column name="child_name" sortOrder="80">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">child_name</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="parent_email" sortOrder="90">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">parent_email</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="parent_phone" sortOrder="100">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">parent_phone</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="artwork_title" sortOrder="110">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">artwork_title</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="banner_image" sortOrder="120">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">banner_image</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="cta_link" sortOrder="125">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">cta_link</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="description" sortOrder="130">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">description</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="documents" sortOrder="140">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">documents</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<actionsColumn name="actions" class="Embitel\Contest\Ui\Component\Listing\Column\ContestActions" sortOrder="150">
+			<settings>
+				<indexField>contest_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+	</columns>
+</listing>

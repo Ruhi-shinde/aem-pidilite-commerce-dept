@@ -1,0 +1,7 @@
+type     {
+    renders_meta_json_string: String
+}
+
+extend type ProductInterface {
+    renders_meta_json_string: String @resolver(class: "Dept\\RendererImporter\\Model\\Resolver\\RendererMetaResolver")
+}

@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <table name="embitel_downloadable_product_sample"
+           resource="default"
+           engine="innodb"
+           comment="Embitel Downloadable Product Samples">
+
+        <column xsi:type="int"
+                name="entity_id"
+                unsigned="true"
+                nullable="false"
+                identity="true"
+                comment="Entity ID"/>
+
+        <column xsi:type="int"
+                name="product_id"
+                unsigned="true"
+                nullable="false"
+                comment="Product ID"/>
+
+        <column xsi:type="varchar"
+                name="title"
+                nullable="false"
+                length="255"
+                comment="Title"/>
+
+        <column xsi:type="varchar"
+                name="file"
+                nullable="false"
+                length="512"
+                comment="File Path"/>
+
+        <column xsi:type="int"
+                name="sort_order"
+                unsigned="true"
+                nullable="false"
+                default="0"
+                comment="Sort Order"/>
+
+        <column xsi:type="timestamp"
+                name="created_at"
+                nullable="false"
+                default="CURRENT_TIMESTAMP"
+                on_update="false"
+                comment="Created At"/>
+
+        <column xsi:type="timestamp"
+                name="updated_at"
+                nullable="false"
+                default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>
+
+        <constraint xsi:type="primary"
+                    referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+
+        <constraint xsi:type="foreign"
+                    referenceId="EMBITEL_DOWNLOADABLE_PRODUCT_SAMPLE_PRODUCT_ID_CATALOG_PRODUCT_ENTITY_ENTITY_ID"
+                    table="embitel_downloadable_product_sample"
+                    column="product_id"
+                    referenceTable="catalog_product_entity"
+                    referenceColumn="entity_id"
+                    onDelete="CASCADE"/>
+
+        <index referenceId="EMBITEL_DOWNLOADABLE_PRODUCT_SAMPLE_PRODUCT_ID"
+                indexType="btree">
+            <column name="product_id"/>
+        </index>
+
+        <index referenceId="EMBITEL_DOWNLOADABLE_PRODUCT_SAMPLE_PRODUCT_ID_SORT_ORDER"
+                indexType="btree">
+            <column name="product_id"/>
+            <column name="sort_order"/>
+        </index>
+
+    </table>
+
+</schema>
